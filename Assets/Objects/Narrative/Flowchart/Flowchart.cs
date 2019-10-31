@@ -31,14 +31,14 @@ namespace Game.Narrative
 
                 index++;
 
-                if(index < Nodes.Count)
+                if(index >= Nodes.Count)
                 {
-                    Nodes[index].OnEnd += Chain;
-                    Nodes[index].Execute();
+                    End();
                 }
                 else
                 {
-                    End();
+                    Nodes[index].OnEnd += Chain;
+                    Nodes[index].Execute();
                 }
             }
 

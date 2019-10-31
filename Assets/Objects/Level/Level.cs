@@ -19,6 +19,7 @@ namespace Game
             Instance = this;
 
             SayDialog = FindObjectOfType<SayDialog>();
+            SayDialog.Hide();
         }
     }
 }

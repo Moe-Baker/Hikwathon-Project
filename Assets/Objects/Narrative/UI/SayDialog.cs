@@ -9,7 +9,6 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 using Game.UI;
-using Game.Narrative.Characters;
 
 namespace Game.Narrative
 {
@@ -23,11 +22,8 @@ namespace Game.Narrative
 
         public virtual void Show(IDialog dialog)
         {
-            character.text = dialog.Character.DisplayName;
+            character.text = dialog.Character.DisplayName + ":";
             text.text = dialog.Text;
-
-            Debug.Log(dialog.Text);
-            Debug.Log(character.text);
 
             Show();
         }

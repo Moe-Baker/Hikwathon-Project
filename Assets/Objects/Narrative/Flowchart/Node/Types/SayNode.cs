@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Game.Narrative.Characters;
-
 namespace Game.Narrative
 {
 	public class SayNode : Node, IDialog
