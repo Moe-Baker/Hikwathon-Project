@@ -641,7 +641,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    7: RL_OVERRIDE
+    7: RTL_OVERRIDE
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
