@@ -7,12 +7,18 @@ using Game.Narrative;
 
 namespace Game
 {
-    [DefaultExecutionOrder(-200)]
+    [DefaultExecutionOrder(ExecutionOrder)]
 	public class Level : MonoBehaviour
 	{
+        public const int ExecutionOrder = -200;
+
 		public static Level Instance { get; protected set; }
 
         public SayDialog SayDialog { get; protected set; }
+
+        public LevelAR AR { get; protected set; }
+
+        public LevelCameraSetup CameraSetup { get; protected set; }
 
         private void Awake()
         {
@@ -20,6 +26,10 @@ namespace Game
 
             SayDialog = FindObjectOfType<SayDialog>();
             SayDialog.Hide();
+
+            AR = FindObjectOfType<LevelAR>();
+
+            CameraSetup = FindObjectOfType<LevelCameraSetup>();
         }
     }
 }
