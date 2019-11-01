@@ -24,13 +24,13 @@ namespace Game
             {
                 set
                 {
-                    foreach (var target in behaviour.GetComponentsInChildren<Renderer>())
+                    foreach (var target in behaviour.GetComponentsInChildren<Renderer>(true))
                         target.enabled = value;
 
-                    foreach (var target in behaviour.GetComponentsInChildren<Collider>())
+                    foreach (var target in behaviour.GetComponentsInChildren<Collider>(true))
                         target.enabled = value;
 
-                    foreach (var target in behaviour.GetComponentsInChildren<Canvas>())
+                    foreach (var target in behaviour.GetComponentsInChildren<Canvas>(true))
                         target.enabled = value;
                 }
             }

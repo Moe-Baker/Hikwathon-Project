@@ -22,7 +22,17 @@ namespace Game.Narrative
 
         public virtual void Show(IDialog dialog)
         {
-            character.text = dialog.Character.DisplayName + ":";
+            character.gameObject.SetActive(dialog.Character != null);
+
+            if (dialog.Character == null)
+            {
+                
+            }
+            else
+            {
+                character.text = dialog.Character.DisplayName + ":";
+            }
+
             text.text = dialog.Text;
 
             Show();

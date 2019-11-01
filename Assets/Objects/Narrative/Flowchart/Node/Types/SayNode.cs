@@ -15,15 +15,22 @@ namespace Game.Narrative
         string text = "";
         public string Text => text;
 
+        [SerializeField]
+        bool waitForClick = true;
+
         public SayDialog SayDialog => Level.Instance.SayDialog;
 
         public override void Execute()
         {
             base.Execute();
 
-            SayDialog.OnProgress += SayDialogProgressCallback;
+            if(waitForClick)
+                SayDialog.OnProgress += SayDialogProgressCallback;
 
             SayDialog.Show(this);
+
+            if (waitForClick == false)
+                End();
         }
 
         private void SayDialogProgressCallback()

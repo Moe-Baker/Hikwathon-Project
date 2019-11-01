@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Game.Narrative
 {
@@ -28,6 +30,7 @@ namespace Game.Narrative
             }
         }
 
+        public UnityEvent OnBegin;
 		public void Begin()
         {
             transform.localPosition = Vector3.zero;
@@ -35,13 +38,13 @@ namespace Game.Narrative
 
             gameObject.SetActive(true);
 
-            End();
+            OnBegin.Invoke();
         }
 
-        public event Action OnEnd;
-        protected void End()
+        public UnityEvent OnEnd;
+        public void End()
         {
-            OnEnd?.Invoke();
+            OnEnd.Invoke();
         }
 	}
 }

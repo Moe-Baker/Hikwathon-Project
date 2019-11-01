@@ -13,13 +13,6 @@ namespace Game.Narrative
 		public IList<Page> Pages { get; protected set; }
         int index;
 
-        public UIProperty UI;
-        [Serializable]
-        public class UIProperty
-        {
-            public Button next;
-        }
-
         public Animator Animator { get; protected set; }
 
         private void Awake()
@@ -35,10 +28,8 @@ namespace Game.Narrative
             {
                 Pages[i].Init(this);
 
-                Pages[i].Visible = (i == 1);
+                Pages[i].Visible = (i == 0);
             }
-
-            UI.next.onClick.AddListener(Next);
         }
 
         public void Open()
@@ -59,18 +50,16 @@ namespace Game.Narrative
         }
         void Begin(int index)
         {
-            UI.next.interactable = false;
-
-            Pages[index].OnEnd += PageEndCallback;
+            Pages[index].OnEnd.AddListener(PageEndCallback);
 
             Pages[index].Begin();
         }
 
         private void PageEndCallback()
         {
-            Pages[index].OnEnd -= PageEndCallback;
+            Pages[index].OnEnd.RemoveListener(PageEndCallback);
 
-            UI.next.interactable = true;
+            Next();
         }
 
         public void Next()
