@@ -31,9 +31,11 @@ namespace Game.Narrative
         {
             Pages = GetComponentsInChildren<Page>();
 
-            foreach (var page in Pages)
+            for (int i = 0; i < Pages.Count; i++)
             {
-                page.Init(this);
+                Pages[i].Init(this);
+
+                Pages[i].Visible = (i == 1);
             }
 
             UI.next.onClick.AddListener(Next);
@@ -66,6 +68,8 @@ namespace Game.Narrative
 
         private void PageEndCallback()
         {
+            Pages[index].OnEnd -= PageEndCallback;
+
             UI.next.interactable = true;
         }
 
@@ -79,6 +83,8 @@ namespace Game.Narrative
             }
             else
             {
+                Pages[index - 1].Visible = false;
+
                 Begin(index);
             }
         }

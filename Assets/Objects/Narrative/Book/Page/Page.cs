@@ -16,9 +16,24 @@ namespace Game.Narrative
             index = book.Pages.IndexOf(this);
         }
 
+        public bool Visible
+        {
+            get
+            {
+                return gameObject.activeSelf;
+            }
+            set
+            {
+                gameObject.SetActive(value);
+            }
+        }
+
 		public void Begin()
         {
-            book.Animator.Play("Page " + (index + 1));
+            transform.localPosition = Vector3.zero;
+            transform.localEulerAngles = Vector3.zero;
+
+            gameObject.SetActive(true);
 
             End();
         }
