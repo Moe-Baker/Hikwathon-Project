@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using UnityEngine.UI;
 
@@ -22,7 +23,7 @@ namespace Game.Narrative
 
         private void Start()
         {
-            Pages = GetComponentsInChildren<Page>();
+            Pages = GetComponentsInChildren<Page>(true);
 
             for (int i = 0; i < Pages.Count; i++)
             {
@@ -78,9 +79,16 @@ namespace Game.Narrative
             }
         }
 
+        public void Restart()
+        {
+            SceneManager.LoadScene(gameObject.scene.name);
+        }
+
         public event Action OnEnd;
         void End()
         {
+            Animator.SetTrigger("Close");
+
             OnEnd?.Invoke();
         }
     }

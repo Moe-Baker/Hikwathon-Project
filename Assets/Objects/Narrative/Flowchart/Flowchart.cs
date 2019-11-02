@@ -25,6 +25,9 @@ namespace Game.Narrative
         {
             index = 0;
 
+            if (Nodes.Count == 0)
+                End();
+
             void Chain()
             {
                 Nodes[index].OnEnd -= Chain;

@@ -18,6 +18,8 @@ namespace Game.Narrative
             index = book.Pages.IndexOf(this);
         }
 
+        public GameObject scene;
+
         public bool Visible
         {
             get
@@ -27,6 +29,9 @@ namespace Game.Narrative
             set
             {
                 gameObject.SetActive(value);
+
+                if (scene != null)
+                    scene.SetActive(value);
             }
         }
 
@@ -36,7 +41,7 @@ namespace Game.Narrative
             transform.localPosition = Vector3.zero;
             transform.localEulerAngles = Vector3.zero;
 
-            gameObject.SetActive(true);
+            Visible = true;
 
             OnBegin.Invoke();
         }

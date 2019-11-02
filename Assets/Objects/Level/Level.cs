@@ -20,6 +20,8 @@ namespace Game
 
         public LevelCameraSetup CameraSetup { get; protected set; }
 
+        public AudioSource AudioSource { get; protected set; }
+
         private void Awake()
         {
             Instance = this;
@@ -30,6 +32,8 @@ namespace Game
             AR = FindObjectOfType<LevelAR>();
 
             CameraSetup = FindObjectOfType<LevelCameraSetup>();
+
+            AudioSource = GetComponent<AudioSource>();
         }
     }
 }
